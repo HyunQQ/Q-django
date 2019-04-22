@@ -1,1 +1,12 @@
-hello jango
+<html>
+    <head>Q's dev Django</head>
+{% for post in posts%}
+    <div>
+        <p>published: {{post.published_date}} </p>
+        <h1><a href="">{{post.title}}</a></h1>
+        <p>{{post.text|linebreaks}}</p>
+    </div>
+
+{% endfor%}
+
+</html>
