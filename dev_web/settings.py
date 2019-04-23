@@ -25,7 +25,7 @@ SECRET_KEY = 'krioz2(y@8v5+==yyd&_hduo*^%i1u_3k#x$qhltt-lysz3lg2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
