@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <h1><a href="">Q's dev Django</a></h1>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class = "content container">
+            <div class = "row">
+                <div class = "col-md-8">
+                    {% block content%}
+                    {% endblock%}
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
