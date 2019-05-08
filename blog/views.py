@@ -4,6 +4,9 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 
+# email test
+from django.core.mail import EmailMessage
+
 #lte : less than equal
 # lt : less than
 # gte :  greater than equal
@@ -33,6 +36,11 @@ def post_new(request):
             post.author = request.user
             # post.published_date = timezone.now()
             post.save()
+
+            #email test#######
+            email = EmailMessage('email test', '새로운 글이 등록되었습니다.',  to=['5hyung@datasolution.kr'])
+            email.send()
+            #########
             return redirect('post_detail', post.pk)
     else:
         form = PostForm()
