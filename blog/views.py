@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, LoginForm
+from django.http import HttpResponse
 
 # email test
 from django.core.mail import EmailMessage
@@ -38,8 +40,11 @@ def post_new(request):
             post.save()
 
             #email test#######
-            email = EmailMessage('email test', '새로운 글이 등록되었습니다.',  to=['5hyung@datasolution.kr'])
-            email.send()
+            # try:
+            #     email = EmailMessage('email test', '새로운 글이 등록되었습니다.',  to=['5hyung@datasolution.kr'])
+            #     email.send()
+            # except:
+                
             #########
             return redirect('post_detail', post.pk)
     else:
@@ -74,3 +79,4 @@ def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_list')
+
