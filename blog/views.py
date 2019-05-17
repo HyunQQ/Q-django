@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, LoginForm, CommentForm
+from .forms import PostForm, LoginForm, CommentForm, SearchForm
 from django.http import HttpResponse
 
 # email test
@@ -104,3 +104,13 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail',pk=comment.post.pk)
+
+
+def post_search(request):
+    if request.method = "POST":
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            word = form.
+
+    
+    
