@@ -20,7 +20,8 @@ class CommentForm(forms.ModelForm):
         fields = ['author','text']
 
 class SearchForm(forms.ModelForm):
-    class Meta:
-        model = Search
-        filed = ['word']
-    # word = forms.CharField(label='Search word')
+    search_item = forms.TextInput
+
+
+
+    

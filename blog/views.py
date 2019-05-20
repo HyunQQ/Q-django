@@ -106,11 +106,13 @@ def comment_remove(request, pk):
     return redirect('post_detail',pk=comment.post.pk)
 
 
-def post_search(request):
-    if request.method = "POST":
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            word = form.
+def post_search(request,pk):
+    search_instance = get_object_or_404(request,pk)
+
+    search_form = SearchForm(request.GET)
+    
+    if search_form.is_valid():
+        search_instance = 
 
     
     

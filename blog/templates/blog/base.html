@@ -18,6 +18,15 @@
             {% endif %}
             <h1><a href="http://127.0.0.1:8000/">Qlog</a></h1>
         </div>
+
+        <div class ="search-box">
+            <form action="" method="get">
+                <label> Enter text </label>
+                <input type="text" name="item" value="{{ item }}">
+                <input type="submit" value="search">
+            </form>
+        </div>
+
         <div class = "content container">
             <div class = "row">
                 <div class = "col-md-8">
