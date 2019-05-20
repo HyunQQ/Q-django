@@ -14,6 +14,15 @@ from django.core.mail import EmailMessage
 # gte :  greater than equal
 # gt :  greater than
 
+#  검색리스트가 출력 되지 않는 문제 발생
+# def post_search(request):
+#     if request.GET.get('item'):
+#         var_col = request.GET.get('fd_name')
+#         search_type='contains'
+#         filter = var_col + '__' + search_type
+#         print(filter)
+#         posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
+#         return render(request, 'blog/post_list.html',{'posts':posts})
 
 def post_list(request):
     if request.GET.get('item'):
@@ -22,7 +31,7 @@ def post_list(request):
         filter = var_col + '__' + search_type
         print(filter)
         posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
-        return (request, 'blog/post_list.html',{'posts':posts})
+        return render(request, 'blog/post_list.html',{'posts':posts})
     
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
