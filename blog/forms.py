@@ -19,8 +19,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['author','text']
 
-class SearchForm(forms.ModelForm):
-    search_item = forms.TextInput
+# class SearchForm(forms.ModelForm):
+#     search_item = forms.TextInput
 
 
 

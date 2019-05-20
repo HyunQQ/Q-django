@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Post, Comment
-from .forms import PostForm, LoginForm, CommentForm, SearchForm
+from .forms import PostForm, LoginForm, CommentForm
 from django.http import HttpResponse
 
 # email test
@@ -16,6 +16,14 @@ from django.core.mail import EmailMessage
 
 
 def post_list(request):
+    if request.GET.get('item'):
+        var_col = request.GET.get('fd_name')
+        search_type='contains'
+        filter = var_col + '__' + search_type
+        print(filter)
+        posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
+        return (request, 'blog/post_list.html',{'posts':posts})
+    
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
 
@@ -106,13 +114,7 @@ def comment_remove(request, pk):
     return redirect('post_detail',pk=comment.post.pk)
 
 
-def post_search(request,pk):
-    search_instance = get_object_or_404(request,pk)
-
-    search_form = SearchForm(request.GET)
-    
-    if search_form.is_valid():
-        search_instance = 
+# def post_search(request):
 
     
     
