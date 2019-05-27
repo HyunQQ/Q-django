@@ -17,12 +17,13 @@ from django.core.mail import EmailMessage
 
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
-
+    comments = Comment.objects.filter(created_date__lte = timezone.now()).order_by('-created_date')
+    
     if request.method =="POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -34,6 +35,7 @@ def post_detail(request, pk):
         form = CommentForm()
     return render(request, 'blog/post_detail.html', {
             'post':post,
+            'comments':comments,
             'form':form
         })
 

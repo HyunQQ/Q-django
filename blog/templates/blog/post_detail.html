@@ -26,7 +26,7 @@
     </div>
     <hr>
     <!-- <a class="btn btn-default" href = "{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a> -->
-    {% for comment in post.comments.all %}
+    {% for comment in comments %}
         {% if user.is_authenticated or comment.approved_comment %}
         <div class="comment">
             <div calss="date">
