@@ -15,8 +15,17 @@
         <p>{{ post.text|linebreaks }}</p>
     </div>
 
+
+    <div>
+        <p>Add Comment</p>
+        <form method="POST" class ="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Send</button>
+        </form>
+    </div>
     <hr>
-    <a class="btn btn-default" href = "{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+    <!-- <a class="btn btn-default" href = "{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a> -->
     {% for comment in post.comments.all %}
         {% if user.is_authenticated or comment.approved_comment %}
         <div class="comment">
