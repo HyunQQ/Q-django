@@ -4,6 +4,10 @@ from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
+<<<<<<< HEAD
+# , SearchForm
+=======
+>>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 from django.http import HttpResponse
 
 # view 상속
@@ -52,6 +56,30 @@ class PostDetail(View):
 
 
 def post_list(request):
+<<<<<<< HEAD
+    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
+    return render(request, 'blog/post_list.html',{'posts':posts})
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
+    comments = Comment.objects.filter(created_date__lte = timezone.now()).order_by('-created_date')
+    
+    if request.method =="POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'blog/post_detail.html', {
+            'post':post,
+            'comments':comments,
+            'form':form
+        })
+
+=======
     if request.GET.get('item'):
         var_col = request.GET.get('fd_name')
         search_type='contains'
@@ -63,6 +91,7 @@ def post_list(request):
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
 
+>>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 #로그인 요구를 위한 장식자
 @login_required(login_url='admin:login')
 def post_new(request):
@@ -142,6 +171,13 @@ def comment_remove(request, pk):
 
 
 # def post_search(request):
+<<<<<<< HEAD
+#     if request.method = "POST":
+#         form = SearchForm(request.POST)
+#         if form.is_valid():
+#             word = form.
+=======
+>>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 
     
     

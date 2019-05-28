@@ -17,11 +17,10 @@ class LoginForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['author','text']
+        fields = ['text','author']
 
 # class SearchForm(forms.ModelForm):
-#     search_item = forms.TextInput
-
-
-
-    
+#     class Meta:
+#         model = Search
+#         filed = ['word']
+#     # word = forms.CharField(label='Search word')
