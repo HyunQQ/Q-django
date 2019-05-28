@@ -4,10 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.utils import timezone
 from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
-<<<<<<< HEAD
 # , SearchForm
-=======
->>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 from django.http import HttpResponse
 
 # view 상속
@@ -31,32 +28,9 @@ from django.views.generic import View
 #         posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
 #         return render(request, 'blog/post_list.html',{'posts':posts})
 
-class PostDetail(View):
-    def post_detail(request, pk):
-        # try:
-        #     post = Post.objects.get(pk=pk) # Post.DoesNotExist pk 가 없을 경우 500에러 처리를 막아준다.
-        # except Post.DoesNotExist:
-        #     raise Http404   # django.http.Http404
-
-        post = get_object_or_404(Post, pk=pk) # 위의 4줄과 같은 역할
-        return render(request, 'blog/post_detail.html', {'post':post})
-    
-    def add_comment_to_post(request, pk):
-        post = get_object_or_404(Post, pk=pk)
-        if request.method == "POST":
-            commentform  = CommentForm(request.POST)
-            if commentform.is_valid():
-                comment = commentform.save(commit=False)
-                comment.post = post
-                comment.save()
-                return redirect('PostDetail.post_detail', pk=post.pk)
-        else:
-            form = CommentForm()
-        return render(request, 'blog/post_detail.html',{'form':form})
 
 
 def post_list(request):
-<<<<<<< HEAD
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
 
@@ -79,19 +53,6 @@ def post_detail(request, pk):
             'form':form
         })
 
-=======
-    if request.GET.get('item'):
-        var_col = request.GET.get('fd_name')
-        search_type='contains'
-        filter = var_col + '__' + search_type
-        # print(filter)
-        posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
-        return render(request, 'blog/post_list.html',{'posts':posts})
-    
-    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html',{'posts':posts})
-
->>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 #로그인 요구를 위한 장식자
 @login_required(login_url='admin:login')
 def post_new(request):
@@ -171,13 +132,10 @@ def comment_remove(request, pk):
 
 
 # def post_search(request):
-<<<<<<< HEAD
 #     if request.method = "POST":
 #         form = SearchForm(request.POST)
 #         if form.is_valid():
 #             word = form.
-=======
->>>>>>> 073e370a5eac25ff1561fbaa4a3e0111509cba16
 
     
     
