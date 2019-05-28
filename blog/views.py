@@ -56,7 +56,7 @@ def post_list(request):
         var_col = request.GET.get('fd_name')
         search_type='contains'
         filter = var_col + '__' + search_type
-        print(filter)
+        # print(filter)
         posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
         return render(request, 'blog/post_list.html',{'posts':posts})
     
