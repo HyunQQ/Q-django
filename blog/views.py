@@ -31,6 +31,14 @@ from django.views.generic import View
 
 
 def post_list(request):
+    if request.GET.get("item"):
+        option= request.GET.get('fd_name')
+        search_type='contains'
+        filter = option + '__' + search_type
+        posts = Post.objects.filter(**{filter: request.GET.get('item')}, published_date__lte = timezone.now()).order_by('-published_date')
+        
+        return render(request, 'blog/post_list.html',{'posts':posts})
+
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html',{'posts':posts})
 
