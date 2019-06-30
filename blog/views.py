@@ -72,13 +72,6 @@ def post_new(request):
             # post.published_date = timezone.now()
             post.save()
 
-            #email test#######
-            # try:
-            #     email = EmailMessage('email test', '새로운 글이 등록되었습니다.',  to=['5hyung@datasolution.kr'])
-            #     email.send()
-            # except:
-                
-            #########
             return redirect('post_detail', post.pk)
     else:
         form = PostForm()
@@ -137,13 +130,6 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail',pk=comment.post.pk)
-
-
-# def post_search(request):
-#     if request.method = "POST":
-#         form = SearchForm(request.POST)
-#         if form.is_valid():
-#             word = form.
 
     
     
