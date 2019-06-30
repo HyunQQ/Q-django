@@ -6,7 +6,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         # fields = '__all__' 모든 필드 사용시
-        fields =('title','text')
+        fields =('title','text','category')
 
 
 class LoginForm(forms.ModelForm):

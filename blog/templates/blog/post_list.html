@@ -11,6 +11,7 @@
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{post.text|linebreaks}}</p>
             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comment.count }}</a>
+            <p>{{post.category}}</p>
         </div>
 
     {% endfor%}

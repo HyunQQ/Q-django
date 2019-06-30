@@ -18,12 +18,15 @@
                 {% else %}
                 <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
-                <h1><a href="http://127.0.0.1:8000/">Qlog</a></h1>
+                <h1><a href="http://127.0.0.1:8000/">Q's_dev_log</a></h1>
                 
             </div>
 
             
             <div class ="search-box">
+
+                <button class='btn'>분류</button>            
+                        
                 <form class="search-box-form" action="{% url 'post_list' %}" method="get">
                     <!-- <div class='search-box'></div> -->
                     <label> 검색 </label>
