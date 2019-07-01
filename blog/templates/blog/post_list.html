@@ -2,17 +2,14 @@
 
 {% block content%}
     {% for post in posts%}
+    <a class="post_link" href="{% url 'post_detail' pk=post.pk %}">
         <div class ="post">
-            <div class='date'>
-                    {{post.published_date}}
-            </div>
-            
-            <!-- <h1><a href="">{{post.title}}</a></h1> -->
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{post.text|linebreaks}}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comment.count }}</a>
-            <p>{{post.category}}</p>
+            <h1>{{ post.title }}</h1>
+            <p id='date'>{{post.published_date}}</p>
+            <p id='contents'>{{post.text|linebreaks}}</p>
+            Comments: {{ post.approved_comment.count }}
+            <p id='category' >tag : {{post.category}}</p>
         </div>
-
+    </a>
     {% endfor%}
 {% endblock %}

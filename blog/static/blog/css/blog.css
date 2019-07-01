@@ -18,16 +18,8 @@ body{
     text-decoration: none;
 }
 
-.content {
-    margin-left: 40px;
-}
-/* 
-h1, h2, h3, h4{
-    
-} */
-.date{
-    color: #828282
-}
+
+
 
 .save{
     float: right;
@@ -44,12 +36,38 @@ h1, h2, h3, h4{
     margin-right: 20px;
 }
 
-.post{
-    margin-bottom: 70px;
+.container{
+    position: relative;
 }
 
-.post h1 a, .post h1 a:visited{
+
+
+.post{
+    
+    position: relative;
+    margin-bottom: 70px;
+    border-color: #32AAFF;
+    border-bottom-style: dotted;
+    
+}
+.post:hover{
+    background-color: #d3d3d3;
+}
+
+.post #date{
+    
+    color: #828282;
+}
+.post h1{
     color: #000000;
+}
+.post #contents{
+    text-align: center;
+    
+}
+
+.post #category{
+    color: #828282;
 }
 
 .comment{
@@ -68,3 +86,4 @@ h1, h2, h3, h4{
 .add-comment{
     height: 100px;
 }
+
