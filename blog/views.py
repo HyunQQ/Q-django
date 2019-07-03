@@ -2,33 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.utils import timezone
-from .models import Post, Comment
-from .forms import PostForm, LoginForm, CommentForm
-# , SearchForm
+from django.views.generic import View
 from django.http import HttpResponse
 
-# view 상속
-from django.views.generic import View
-
-# email test
-# from django.core.mail import EmailMessage
-
-#lte : less than equal
-# lt : less than
-# gte :  greater than equal
-# gt :  greater than
-
-#  검색리스트가 출력 되지 않는 문제 발생
-# def post_search(request):
-#     if request.GET.get('item'):
-#         var_col = request.GET.get('fd_name')
-#         search_type='contains'
-#         filter = var_col + '__' + search_type
-#         print(filter)
-#         posts = Post.objects.filter(**{filter: request.GET.get('item')}).order_by('-published_date')
-#         return render(request, 'blog/post_list.html',{'posts':posts})
-
-
+from .models import Post, Comment
+from .forms import PostForm, LoginForm, CommentForm
 
 def post_list(request):
     if request.GET.get("item"):
