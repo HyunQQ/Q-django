@@ -82,18 +82,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'django_post_db',
-#         'USER': 'spss@django-post-svr',
-#         'PASSWORD': 'spss',
-#         'HOST': 'django-post-svr.postgres.database.azure.com',
-#         'PORT': '',
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
