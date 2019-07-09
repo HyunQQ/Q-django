@@ -8,13 +8,14 @@ from django.http import HttpResponse
 from .models import Post, Comment
 from .forms import PostForm, LoginForm, CommentForm
 
+
 def post_list(request):
+    print("post_list")
     if request.GET.get("item"):
         option= request.GET.get('fd_name')
         search_type='contains'
         filter = option + '__' + search_type
         posts = Post.objects.filter(**{filter: request.GET.get('item')}, published_date__lte = timezone.now()).order_by('-published_date')
-        
         return render(request, 'blog/post_list.html',{'posts':posts})
 
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-published_date')
@@ -82,7 +83,7 @@ def post_publish(request, pk):
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('post_list')
+    return redirect('blog:post_list')
 
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)

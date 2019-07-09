@@ -2,7 +2,7 @@
 
 {% block content%}
     {% for post in posts%}
-    <a class="post_link" href="{% url 'post_detail' pk=post.pk %}">
+    <a class="post_link" href="{% url 'blog:post_detail' pk=post.pk %}">
         <div class ="post">
             <h1>{{ post.title }}</h1>
             <p id='date'>{{post.published_date}}</p>
