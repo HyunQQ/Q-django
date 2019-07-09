@@ -1,9 +1,9 @@
-h1 a{
+#blog-title{
     color: #00498c;
     size : 100px;
+    margin-top: 50px;
+
 }
-
-
 
 .top-menu, .top-menu:hover, .top-menu:visited{
     color: #32AAFF;

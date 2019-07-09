@@ -36,18 +36,11 @@
                     </div>
     
                     <ul class="list-unstyled components">
-                        <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <li>
+                            <a href="{% url 'blog:post_list' %}">
                                 <i class="glyphicon glyphicon-home"></i>
                                 Home
                             </a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li><a href="#">Home 1</a></li>
-                                <li><a href="#">Home 2</a></li>
-                                <li><a href="#">Home 3</a></li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="#">
                                 <i class="glyphicon glyphicon-briefcase"></i>
                                 About
@@ -95,7 +88,7 @@
             
                         <div class="navbar-header">
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-list"></i>
+                                <span class="glyphicon glyphicon-list"></span>
                                 <!-- <span>Toggle Sidebar</span> -->
                             </button>
                         </div>
@@ -109,8 +102,9 @@
                         {% else %}
                         <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></span></a>
                         {% endif %}
-                        <h1><a href="http://127.0.0.1:8000/">Q's_dev_log</a></h1>
-
+                        
+                        <h1 id="blog-title"><a href="http://127.0.0.1:8000/">Q's Develop</a></h1>
+                        
 
                         <div class ="search-box">
 

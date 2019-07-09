@@ -7,8 +7,8 @@ from django.contrib.auth import views
 #     path('admin/', admin.site.urls),
 # ]
 urlpatterns =[
-    url(r'admin/',admin.site.urls),
-    url(r'^accounts/login/$', views.LoginView.as_view(), name='login', kwargs={'template_name':'login.html'}),
-    url(r'^accounts/logout/$', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
-    url(r'',include('blog.urls')),
+    path('admin/',admin.site.urls),
+    path('accounts/login/', views.LoginView.as_view(), name='login', kwargs={'template_name':'login.html'}),
+    path('accounts/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}),
+    path('',include('blog.urls')),
 ]
